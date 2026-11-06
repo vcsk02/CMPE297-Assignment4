@@ -1,0 +1,116 @@
+[
+  {
+    "file": "videos/01-a2ui.mp4",
+    "duration_seconds": 401.21,
+    "size_bytes": 11873448,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1600,
+        "height": 1000,
+        "duration": "401.125000"
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "duration": "401.210000"
+      }
+    ]
+  },
+  {
+    "file": "videos/02-agui.mp4",
+    "duration_seconds": 359.2,
+    "size_bytes": 11313013,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1600,
+        "height": 1000,
+        "duration": "359.125000"
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "duration": "359.200000"
+      }
+    ]
+  },
+  {
+    "file": "videos/03-mcp-apps.mp4",
+    "duration_seconds": 492.685,
+    "size_bytes": 14107976,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1600,
+        "height": 1000,
+        "duration": "492.625000"
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "duration": "492.685000"
+      }
+    ]
+  },
+  {
+    "file": "videos/04-json-render.mp4",
+    "duration_seconds": 412.94,
+    "size_bytes": 12349185,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1600,
+        "height": 1000,
+        "duration": "412.875000"
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "duration": "412.940000"
+      }
+    ]
+  },
+  {
+    "file": "videos/05-openui.mp4",
+    "duration_seconds": 456.95,
+    "size_bytes": 13674282,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1600,
+        "height": 1000,
+        "duration": "456.875000"
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "duration": "456.950000"
+      }
+    ]
+  },
+  {
+    "file": "videos/06-harness.mp4",
+    "duration_seconds": 429.31,
+    "size_bytes": 12708935,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1600,
+        "height": 1000,
+        "duration": "429.250000"
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "duration": "429.310000"
+      }
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "number": 1,
+    "slug": "a2ui",
+    "title": "A2UI",
+    "file": "app/web/a2ui.jsx",
+    "explanation": "The official MessageProcessor applies createSurface, updateComponents and updateDataModel. The Lit A2uiSurface renders the result. The basic catalog contains no arbitrary HTML; open-ended and mixed examples compose a separate sandboxed host region."
+  },
+  {
+    "number": 2,
+    "slug": "agui",
+    "title": "AG-UI",
+    "file": "app/adapters/events.py",
+    "explanation": "The official event models and EventEncoder frame RUN_STARTED, STATE_SNAPSHOT, tool events, STATE_DELTA and RUN_FINISHED as server-sent events. The frontend applies the accepted patches. The event protocol carries UI state; it does not define its component catalog."
+  },
+  {
+    "number": 3,
+    "slug": "mcp-apps",
+    "title": "MCP Apps",
+    "file": "app/mcp_server.py",
+    "explanation": "The FastMCP tool advertises _meta.ui.resourceUri. The host discovers tools, reads text/html;profile=mcp-app and mounts a sandboxed iframe. The view initializes through JSON-RPC postMessage. Tool results arrive as notifications and button actions round-trip through the host allowlist."
+  },
+  {
+    "number": 4,
+    "slug": "json-render",
+    "title": "json-render",
+    "file": "app/web/catalog.jsx",
+    "explanation": "A Zod catalog defines permitted props. defineCatalog and defineRegistry connect those contracts to official React Renderer. Static mode uses fixed slots. Declarative mode passes the bounded element map. GeneratedView is a custom catalog component containing a sandboxed iframe."
+  },
+  {
+    "number": 5,
+    "slug": "openui",
+    "title": "OpenUI Lang",
+    "file": "app/adapters/formats.py",
+    "explanation": "The adapter converts the graph into assignments such as root = Stack([title, units], \"column\"). Forward references resolve in the official OpenUI Lang parser and React renderer. createLibrary and defineComponent supply the component signatures and renderers."
+  },
+  {
+    "number": 6,
+    "slug": "harness",
+    "title": "Harness integration",
+    "file": "app/harness.py",
+    "explanation": "A bounded loop proposes render_ui, dispatches the allowlisted tool, validates the spec, records the tool observation and returns a final assistant response. The history and budget are visible. Replay scripts this sequence; the optional live provider generates the UI spec but does not make this a general autonomous coding agent."
+  }
+]

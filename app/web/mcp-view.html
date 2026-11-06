@@ -1,0 +1,118 @@
+<!doctype html><meta charset="utf-8" />
+<meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; frame-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'"
+/>
+<style>
+  body {
+    font: 17px system-ui;
+    color: #143b36;
+    padding: 16px;
+  }
+  .stack {
+    display: flex;
+    gap: 16px;
+  }
+  .column {
+    flex-direction: column;
+  }
+  .row {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .metric {
+    padding: 22px;
+    background: #edf6f3;
+    border-radius: 12px;
+  }
+  strong {
+    display: block;
+    font-size: 32px;
+  }
+  button {
+    background: #16775f;
+    color: white;
+    border: 0;
+    padding: 14px;
+    border-radius: 8px;
+  }
+  iframe {
+    border: 0;
+    width: 100%;
+    height: 320px;
+  }
+  #status {
+    font-size: 13px;
+    color: #54756c;
+  }
+</style>
+<p id="status">MCP Apps · waiting for host initialization</p>
+<main id="app"></main>
+<script>
+  let nextId = 1,
+    ready = false;
+  const send = (method, params = {}) =>
+    parent.postMessage({ jsonrpc: "2.0", id: nextId++, method, params }, "*");
+  function draw(spec, key) {
+    const n = spec.elements[key],
+      p = n.props;
+    if (n.type === "GeneratedView") {
+      const frame = document.createElement("iframe");
+      frame.title = "Generated deployment map";
+      frame.sandbox = "";
+      frame.srcdoc = `<!doctype html><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">${p.html}`;
+      return frame;
+    }
+    const node = document.createElement(
+      n.type === "Button" ? "button" : n.type === "Text" ? "p" : "div",
+    );
+    if (n.type === "Stack") {
+      node.className = "stack " + p.direction;
+      n.children.forEach((c) => node.append(draw(spec, c)));
+    }
+    if (n.type === "Text") node.textContent = p.text;
+    if (n.type === "Metric") {
+      node.className = "metric";
+      node.textContent = p.label;
+      const value = document.createElement("strong");
+      value.textContent = p.value;
+      node.append(value);
+    }
+    if (n.type === "Button") {
+      node.textContent = p.label;
+      node.onclick = () =>
+        send("tools/call", { name: "acknowledge_plan", arguments: {} });
+    }
+    return node;
+  }
+  addEventListener("message", (event) => {
+    if (event.source !== parent || event.data?.jsonrpc !== "2.0") return;
+    const m = event.data;
+    if (m.id === 1 && m.result && !ready) {
+      ready = true;
+      parent.postMessage(
+        { jsonrpc: "2.0", method: "ui/notifications/initialized" },
+        "*",
+      );
+    }
+    if (m.method === "ui/notifications/tool-result") {
+      const data = JSON.parse(
+        m.params.content.find((c) => c.type === "text").text,
+      );
+      document
+        .getElementById("app")
+        .replaceChildren(draw(data.spec, data.spec.root));
+      document.getElementById("status").textContent =
+        "MCP resource mounted · " + data.provider;
+    }
+    if (m.id > 1)
+      document.getElementById("status").textContent = m.error
+        ? m.error.message
+        : "Action returned: " + JSON.stringify(m.result);
+  });
+  send("ui/initialize", {
+    protocolVersion: "2026-01-26",
+    appInfo: { name: "Resource dashboard", version: "1.0.0" },
+    appCapabilities: {},
+  });
+</script>

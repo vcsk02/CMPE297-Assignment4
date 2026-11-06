@@ -1,0 +1,544 @@
+1
+00:00:00,000 --> 00:00:04,538
+This is part 3, MCP Apps. This is an
+automated walkthrough with synthetic
+
+2
+00:00:04,538 --> 00:00:09,387
+narration. The browser executes the
+repository code using deterministic replay
+
+3
+00:00:09,387 --> 00:00:14,422
+and synthetic emergency resource data. No
+live model call or external application
+
+4
+00:00:14,422 --> 00:00:18,649
+host is claimed. We will explain the
+implementation, execute static,
+
+5
+00:00:18,649 --> 00:00:23,125
+declarative, open-ended and mixed modes,
+and inspect the actual results.
+
+6
+00:00:23,125 --> 00:00:27,906
+The shared core declares the six topics,
+four modes and five allowed components.
+
+7
+00:00:27,906 --> 00:00:32,567
+Validate first checks the number of nodes
+and the root. It tracks visiting and
+
+8
+00:00:32,567 --> 00:00:37,049
+visited nodes so cycles and missing
+children cannot enter the renderer. The
+
+9
+00:00:37,049 --> 00:00:39,200
+catalog is the application contract.
+
+10
+00:00:39,200 --> 00:00:44,074
+The validation walk checks component names
+and exact property names. Every property
+
+11
+00:00:44,074 --> 00:00:48,831
+must be a bounded string. Stack direction
+is an enum, and Button actions can only
+
+12
+00:00:48,831 --> 00:00:53,822
+acknowledge. Only Stack can have children.
+The walk rejects unreachable nodes as well
+
+13
+00:00:53,822 --> 00:00:55,290
+as excessive graph depth.
+
+14
+00:00:55,290 --> 00:00:59,905
+Replay is explicitly a scripted agent. The
+application constructs a title, two
+
+15
+00:00:59,905 --> 00:01:04,580
+metrics and the acknowledge action. Static
+mode preserves this layout. In other
+
+16
+00:01:04,580 --> 00:01:09,313
+modes, compact removes the arrival metric
+and detailed adds a synthetic regional
+
+17
+00:01:09,313 --> 00:01:12,745
+note. These keywords make layout
+differences reproducible.
+
+18
+00:01:12,745 --> 00:01:17,831
+For open-ended and mixed mode, replay
+creates a custom HTML deployment map. User
+
+19
+00:01:17,831 --> 00:01:22,789
+prompt text is escaped before insertion
+into this fixture. Open-ended replaces
+
+20
+00:01:22,789 --> 00:01:28,129
+catalog content with the generated region.
+Mixed inserts the same artifact alongside
+
+21
+00:01:28,129 --> 00:01:32,896
+the application components. These two
+contracts expose different amounts of
+
+22
+00:01:32,896 --> 00:01:33,405
+freedom.
+
+23
+00:01:33,405 --> 00:01:39,987
+mcp_server.py, lines 1 through 31. FastMCP
+registers the HTML resource and its MIME
+
+24
+00:01:39,987 --> 00:01:45,220
+type. show_dashboard advertises the
+resource URI in tool metadata.
+
+25
+00:01:45,220 --> 00:01:51,485
+acknowledge_plan is app-visible and calls
+the same server action allowlist. The
+
+26
+00:01:51,485 --> 00:01:55,450
+module entry point starts the actual stdio
+server.
+
+27
+00:01:55,450 --> 00:02:01,343
+mcp-host.jsx, lines 1 through 34. The host
+discovers the UI metadata before reading
+
+28
+00:02:01,343 --> 00:02:07,024
+the resource. It calls the tool through a
+real MCP client, mounts the HTML in an
+
+29
+00:02:07,024 --> 00:02:12,065
+opaque-origin iframe, validates
+event.source, completes initialization,
+
+30
+00:02:12,065 --> 00:02:17,319
+and forwards input/results. Only
+acknowledge_plan is callable from the app
+
+31
+00:02:17,319 --> 00:02:17,745
+frame.
+
+32
+00:02:17,745 --> 00:02:23,178
+mcp-host.jsx, lines 35 through 68. The
+host discovers the UI metadata before
+
+33
+00:02:23,178 --> 00:02:29,041
+reading the resource. It calls the tool
+through a real MCP client, mounts the HTML
+
+34
+00:02:29,041 --> 00:02:34,546
+in an opaque-origin iframe, validates
+event.source, completes initialization,
+
+35
+00:02:34,546 --> 00:02:39,836
+and forwards input/results. Only
+acknowledge_plan is callable from the app
+
+36
+00:02:39,836 --> 00:02:40,265
+frame.
+
+37
+00:02:40,265 --> 00:02:45,727
+mcp-host.jsx, lines 69 through 88. The
+host discovers the UI metadata before
+
+38
+00:02:45,727 --> 00:02:51,621
+reading the resource. It calls the tool
+through a real MCP client, mounts the HTML
+
+39
+00:02:51,621 --> 00:02:57,155
+in an opaque-origin iframe, validates
+event.source, completes initialization,
+
+40
+00:02:57,155 --> 00:03:02,474
+and forwards input/results. Only
+acknowledge_plan is callable from the app
+
+41
+00:03:02,474 --> 00:03:02,905
+frame.
+
+42
+00:03:02,905 --> 00:03:08,211
+mcp-view.html, lines 1 through 34. The
+trusted app resource has an inline script
+
+43
+00:03:08,211 --> 00:03:12,987
+policy and no network access. It
+initializes with the host over JSON-RPC
+
+44
+00:03:12,987 --> 00:03:17,961
+postMessage, receives tool results, and
+renders the bounded teaching graph.
+
+45
+00:03:17,961 --> 00:03:23,599
+Generated HTML is placed in another iframe
+with an empty sandbox. Its button asks the
+
+46
+00:03:23,599 --> 00:03:25,655
+host to call the approved tool.
+
+47
+00:03:25,655 --> 00:03:31,065
+mcp-view.html, lines 35 through 68. The
+trusted app resource has an inline script
+
+48
+00:03:31,065 --> 00:03:35,874
+policy and no network access. It
+initializes with the host over JSON-RPC
+
+49
+00:03:35,874 --> 00:03:40,883
+postMessage, receives tool results, and
+renders the bounded teaching graph.
+
+50
+00:03:40,883 --> 00:03:46,560
+Generated HTML is placed in another iframe
+with an empty sandbox. Its button asks the
+
+51
+00:03:46,560 --> 00:03:48,630
+host to call the approved tool.
+
+52
+00:03:48,630 --> 00:03:54,271
+mcp-view.html, lines 69 through 102. The
+trusted app resource has an inline script
+
+53
+00:03:54,271 --> 00:03:59,225
+policy and no network access. It
+initializes with the host over JSON-RPC
+
+54
+00:03:59,225 --> 00:04:04,385
+postMessage, receives tool results, and
+renders the bounded teaching graph.
+
+55
+00:04:04,385 --> 00:04:10,232
+Generated HTML is placed in another iframe
+with an empty sandbox. Its button asks the
+
+56
+00:04:10,232 --> 00:04:12,365
+host to call the approved tool.
+
+57
+00:04:12,365 --> 00:04:18,111
+mcp-view.html, lines 103 through 119. The
+trusted app resource has an inline script
+
+58
+00:04:18,111 --> 00:04:23,096
+policy and no network access. It
+initializes with the host over JSON-RPC
+
+59
+00:04:23,096 --> 00:04:28,289
+postMessage, receives tool results, and
+renders the bounded teaching graph.
+
+60
+00:04:28,289 --> 00:04:34,174
+Generated HTML is placed in another iframe
+with an empty sandbox. Its button asks the
+
+61
+00:04:34,174 --> 00:04:36,320
+host to call the approved tool.
+
+62
+00:04:36,320 --> 00:04:40,788
+sandbox.mjs, lines 1 through 8. The
+restrictive CSP is prepended before
+
+63
+00:04:40,788 --> 00:04:45,257
+untrusted markup. Together with
+sandbox="", this blocks scripts, parent
+
+64
+00:04:45,257 --> 00:04:49,914
+access, network requests and form
+submission in generated regions. It does
+
+65
+00:04:49,914 --> 00:04:52,620
+not verify factual claims in their
+content.
+
+66
+00:04:52,620 --> 00:04:57,728
+The HTTP generation route checks topic and
+mode, runs the harness when selected, and
+
+67
+00:04:57,728 --> 00:05:02,471
+otherwise generates a graph. A2UI and
+OpenUI receive their own adapters. AG-UI
+
+68
+00:05:02,471 --> 00:05:07,518
+uses a separate event-stream endpoint. The
+action route checks authorization on the
+
+69
+00:05:07,518 --> 00:05:12,140
+server. These are different delivery
+contracts around the same bounded task.
+
+70
+00:05:12,140 --> 00:05:16,324
+The browser run function clears the
+previous output and trace. MCP mode
+
+71
+00:05:16,324 --> 00:05:20,567
+creates an app host. AG-UI consumes
+streamed events. Other topics post a
+
+72
+00:05:20,567 --> 00:05:25,399
+generation request. Returned results and
+tool history become inspectable UI state.
+
+73
+00:05:25,399 --> 00:05:30,113
+Later in this same module the surface
+selects the official renderer or the fixed
+
+74
+00:05:30,113 --> 00:05:34,415
+static slots. The complete module is
+included in the written walkthrough.
+
+75
+00:05:34,415 --> 00:05:38,877
+Static mode retains the application-
+defined slots. The output shows twelve
+
+76
+00:05:38,877 --> 00:05:43,398
+units and an eight minute arrival
+estimate. The agent cannot introduce a new
+
+77
+00:05:43,398 --> 00:05:48,098
+layout in this contract. The local host
+discovers the tool, reads its resource,
+
+78
+00:05:48,098 --> 00:05:52,500
+completes the app handshake, and delivers
+the tool result over the bridge.
+
+79
+00:05:52,500 --> 00:05:57,079
+Declarative mode chooses a graph from the
+component catalog. The detailed request
+
+80
+00:05:57,079 --> 00:06:01,714
+adds a regional note. Notice the source
+contract and the actual renderer. The same
+
+81
+00:06:01,714 --> 00:06:06,463
+graph can travel over events or in a tool
+result. The local host discovers the tool,
+
+82
+00:06:06,463 --> 00:06:10,816
+reads its resource, completes the app
+handshake, and delivers the tool result
+
+83
+00:06:10,816 --> 00:06:11,720
+over the bridge.
+
+84
+00:06:11,720 --> 00:06:16,203
+Open-ended mode displays a custom HTML
+deployment map. There are no catalog
+
+85
+00:06:16,203 --> 00:06:20,985
+metric cards in this output. The generated
+region receives no scripts or network
+
+86
+00:06:20,985 --> 00:06:25,467
+permission. This replay is real browser
+execution of a scripted output, not
+
+87
+00:06:25,467 --> 00:06:30,189
+evidence of a model generating it. The
+local host discovers the tool, reads its
+
+88
+00:06:30,189 --> 00:06:35,210
+resource, completes the app handshake, and
+delivers the tool result over the bridge.
+
+89
+00:06:35,210 --> 00:06:40,171
+Mixed mode combines catalog content, the
+custom deployment map and the acknowledge
+
+90
+00:06:40,171 --> 00:06:44,345
+action. Inspect both regions. The
+application validates the graph and
+
+91
+00:06:44,345 --> 00:06:48,701
+separately isolates the generated
+document. The local host discovers the
+
+92
+00:06:48,701 --> 00:06:53,299
+tool, reads its resource, completes the
+app handshake, and delivers the tool
+
+93
+00:06:53,299 --> 00:06:54,690
+result over the bridge.
+
+94
+00:06:54,690 --> 00:06:59,160
+Now we change the declarative prompt to
+compact and run again. The arrival metric
+
+95
+00:06:59,160 --> 00:07:03,354
+is removed and Stack changes direction.
+Static mode would preserve its fixed
+
+96
+00:07:03,354 --> 00:07:07,437
+slots. This is a reproducible way to
+explain which decisions belong to the
+
+97
+00:07:07,437 --> 00:07:11,190
+application and which decisions belong to
+the generated description.
+
+98
+00:07:11,190 --> 00:07:15,400
+The acknowledge button executes an
+authorized action and returns a real
+
+99
+00:07:15,400 --> 00:07:20,026
+result. It affects only this synthetic
+demo session. A valid UI description is
+
+100
+00:07:20,026 --> 00:07:24,414
+not permission to call any tool. The
+server and the MCP host both maintain
+
+101
+00:07:24,414 --> 00:07:29,336
+allowlists. This action result comes from
+the application code, not from fabricated
+
+102
+00:07:29,336 --> 00:07:30,225
+console output.
+
+103
+00:07:30,225 --> 00:07:35,591
+The captured test output shows the Python
+contract tests, Node sandbox policy check,
+
+104
+00:07:35,591 --> 00:07:40,958
+and the MCP stdio smoke test. The browser
+matrix separately rendered all twenty four
+
+105
+00:07:40,958 --> 00:07:45,941
+topic and mode combinations with no page
+errors. These checks establish replay
+
+106
+00:07:45,941 --> 00:07:50,924
+execution and local protocol behavior.
+Live model behavior and an external MCP
+
+107
+00:07:50,924 --> 00:07:52,585
+Apps host remain untested.
+
+108
+00:07:52,585 --> 00:07:57,232
+This completes MCP Apps. Review the full
+source walkthrough and this part's codelab
+
+109
+00:07:57,232 --> 00:08:01,431
+README. The prepared narration is
+synthetic. Record your own explanation if
+
+110
+00:08:01,431 --> 00:08:06,022
+required by the course, then upload one
+accessible YouTube video for this part and
+
+111
+00:08:06,022 --> 00:08:10,389
+put its real URL in the manifest. The
+submission checker intentionally reports
+
+112
+00:08:10,389 --> 00:08:12,685
+missing publication or student narration.

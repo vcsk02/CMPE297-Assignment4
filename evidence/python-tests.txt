@@ -1,0 +1,31 @@
+test_agui_lifecycle_and_state (test_contracts.Contracts.test_agui_lifecycle_and_state) ... ok
+test_all_topics_and_modes (test_contracts.Contracts.test_all_topics_and_modes) ... ok
+test_mcp_resource_metadata_and_tool_execution (test_contracts.Contracts.test_mcp_resource_metadata_and_tool_execution) ... /root/.local/lib/python3.12/site-packages/pydantic_settings/sources/utils.py:51: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(  # noqa: B028  (called from many sources at differing depths, so no stacklevel is correct)
+Processing request of type ListToolsRequest
+HTTP Request: POST http://testserver/api/mcp "HTTP/1.1 200 OK"
+Processing request of type ReadResourceRequest
+HTTP Request: POST http://testserver/api/mcp "HTTP/1.1 200 OK"
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+HTTP Request: POST http://testserver/api/mcp "HTTP/1.1 200 OK"
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+HTTP Request: POST http://testserver/api/mcp "HTTP/1.1 200 OK"
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+HTTP Request: POST http://testserver/api/mcp "HTTP/1.1 200 OK"
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+HTTP Request: POST http://testserver/api/mcp "HTTP/1.1 200 OK"
+HTTP Request: POST http://testserver/api/mcp "HTTP/1.1 403 Forbidden"
+ok
+test_mode_boundaries (test_contracts.Contracts.test_mode_boundaries) ... ok
+test_reject_invalid_graphs_and_actions (test_contracts.Contracts.test_reject_invalid_graphs_and_actions) ... HTTP Request: POST http://testserver/api/action/delete_all "HTTP/1.1 403 Forbidden"
+HTTP Request: POST http://testserver/api/action/acknowledge "HTTP/1.1 200 OK"
+ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.341s
+
+OK

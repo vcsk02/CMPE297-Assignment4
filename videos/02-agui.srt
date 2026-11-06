@@ -1,0 +1,404 @@
+1
+00:00:00,000 --> 00:00:04,266
+This is part 2, AG-UI. This is an
+automated walkthrough with synthetic
+
+2
+00:00:04,266 --> 00:00:09,020
+narration. The browser executes the
+repository code using deterministic replay
+
+3
+00:00:09,020 --> 00:00:13,957
+and synthetic emergency resource data. No
+live model call or external application
+
+4
+00:00:13,957 --> 00:00:18,102
+host is claimed. We will explain the
+implementation, execute static,
+
+5
+00:00:18,102 --> 00:00:22,490
+declarative, open-ended and mixed modes,
+and inspect the actual results.
+
+6
+00:00:22,490 --> 00:00:27,271
+The shared core declares the six topics,
+four modes and five allowed components.
+
+7
+00:00:27,271 --> 00:00:31,932
+Validate first checks the number of nodes
+and the root. It tracks visiting and
+
+8
+00:00:31,932 --> 00:00:36,414
+visited nodes so cycles and missing
+children cannot enter the renderer. The
+
+9
+00:00:36,414 --> 00:00:38,565
+catalog is the application contract.
+
+10
+00:00:38,565 --> 00:00:43,439
+The validation walk checks component names
+and exact property names. Every property
+
+11
+00:00:43,439 --> 00:00:48,196
+must be a bounded string. Stack direction
+is an enum, and Button actions can only
+
+12
+00:00:48,196 --> 00:00:53,187
+acknowledge. Only Stack can have children.
+The walk rejects unreachable nodes as well
+
+13
+00:00:53,187 --> 00:00:54,655
+as excessive graph depth.
+
+14
+00:00:54,655 --> 00:00:59,270
+Replay is explicitly a scripted agent. The
+application constructs a title, two
+
+15
+00:00:59,270 --> 00:01:03,945
+metrics and the acknowledge action. Static
+mode preserves this layout. In other
+
+16
+00:01:03,945 --> 00:01:08,678
+modes, compact removes the arrival metric
+and detailed adds a synthetic regional
+
+17
+00:01:08,678 --> 00:01:12,110
+note. These keywords make layout
+differences reproducible.
+
+18
+00:01:12,110 --> 00:01:17,196
+For open-ended and mixed mode, replay
+creates a custom HTML deployment map. User
+
+19
+00:01:17,196 --> 00:01:22,154
+prompt text is escaped before insertion
+into this fixture. Open-ended replaces
+
+20
+00:01:22,154 --> 00:01:27,494
+catalog content with the generated region.
+Mixed inserts the same artifact alongside
+
+21
+00:01:27,494 --> 00:01:32,261
+the application components. These two
+contracts expose different amounts of
+
+22
+00:01:32,261 --> 00:01:32,770
+freedom.
+
+23
+00:01:32,770 --> 00:01:38,029
+events.py, lines 1 through 24. events
+yields the official AG-UI lifecycle,
+
+24
+00:01:38,029 --> 00:01:43,785
+snapshot, tool-call argument stream, state
+delta and finish. encode delegates SSE
+
+25
+00:01:43,785 --> 00:01:49,115
+framing to EventEncoder. The browser
+reducer accepts only the two supported
+
+26
+00:01:49,115 --> 00:01:50,110
+replace paths.
+
+27
+00:01:50,110 --> 00:01:55,273
+transport.mjs, lines 1 through 34. post
+checks HTTP failures. agui uses a
+
+28
+00:01:55,273 --> 00:02:01,214
+streaming UTF-8 decoder and buffers frames
+across network chunk boundaries. It reads
+
+29
+00:02:01,214 --> 00:02:06,589
+official event types, applies only
+expected state patches, raises RUN_ERROR,
+
+30
+00:02:06,589 --> 00:02:09,560
+and rejects a stream missing RUN_FINISHED.
+
+31
+00:02:09,560 --> 00:02:14,881
+transport.mjs, lines 35 through 57. post
+checks HTTP failures. agui uses a
+
+32
+00:02:14,881 --> 00:02:20,921
+streaming UTF-8 decoder and buffers frames
+across network chunk boundaries. It reads
+
+33
+00:02:20,921 --> 00:02:26,385
+official event types, applies only
+expected state patches, raises RUN_ERROR,
+
+34
+00:02:26,385 --> 00:02:29,405
+and rejects a stream missing RUN_FINISHED.
+
+35
+00:02:29,405 --> 00:02:33,873
+sandbox.mjs, lines 1 through 8. The
+restrictive CSP is prepended before
+
+36
+00:02:33,873 --> 00:02:38,342
+untrusted markup. Together with
+sandbox="", this blocks scripts, parent
+
+37
+00:02:38,342 --> 00:02:42,999
+access, network requests and form
+submission in generated regions. It does
+
+38
+00:02:42,999 --> 00:02:45,705
+not verify factual claims in their
+content.
+
+39
+00:02:45,705 --> 00:02:50,813
+The HTTP generation route checks topic and
+mode, runs the harness when selected, and
+
+40
+00:02:50,813 --> 00:02:55,556
+otherwise generates a graph. A2UI and
+OpenUI receive their own adapters. AG-UI
+
+41
+00:02:55,556 --> 00:03:00,603
+uses a separate event-stream endpoint. The
+action route checks authorization on the
+
+42
+00:03:00,603 --> 00:03:05,225
+server. These are different delivery
+contracts around the same bounded task.
+
+43
+00:03:05,225 --> 00:03:09,409
+The browser run function clears the
+previous output and trace. MCP mode
+
+44
+00:03:09,409 --> 00:03:13,652
+creates an app host. AG-UI consumes
+streamed events. Other topics post a
+
+45
+00:03:13,652 --> 00:03:18,484
+generation request. Returned results and
+tool history become inspectable UI state.
+
+46
+00:03:18,484 --> 00:03:23,198
+Later in this same module the surface
+selects the official renderer or the fixed
+
+47
+00:03:23,198 --> 00:03:27,500
+static slots. The complete module is
+included in the written walkthrough.
+
+48
+00:03:27,500 --> 00:03:32,103
+Static mode retains the application-
+defined slots. The output shows twelve
+
+49
+00:03:32,103 --> 00:03:36,767
+units and an eight minute arrival
+estimate. The agent cannot introduce a new
+
+50
+00:03:36,767 --> 00:03:41,861
+layout in this contract. The trace shows
+the official run lifecycle, tool arguments
+
+51
+00:03:41,861 --> 00:03:44,070
+and state delta before RUN_FINISHED.
+
+52
+00:03:44,070 --> 00:03:48,741
+Declarative mode chooses a graph from the
+component catalog. The detailed request
+
+53
+00:03:48,741 --> 00:03:53,470
+adds a regional note. Notice the source
+contract and the actual renderer. The same
+
+54
+00:03:53,470 --> 00:03:58,199
+graph can travel over events or in a tool
+result. The trace shows the official run
+
+55
+00:03:58,199 --> 00:04:01,775
+lifecycle, tool arguments and state delta
+before RUN_FINISHED.
+
+56
+00:04:01,775 --> 00:04:06,366
+Open-ended mode displays a custom HTML
+deployment map. There are no catalog
+
+57
+00:04:06,366 --> 00:04:11,263
+metric cards in this output. The generated
+region receives no scripts or network
+
+58
+00:04:11,263 --> 00:04:15,854
+permission. This replay is real browser
+execution of a scripted output, not
+
+59
+00:04:15,854 --> 00:04:20,628
+evidence of a model generating it. The
+trace shows the official run lifecycle,
+
+60
+00:04:20,628 --> 00:04:23,750
+tool arguments and state delta before
+RUN_FINISHED.
+
+61
+00:04:23,750 --> 00:04:28,847
+Mixed mode combines catalog content, the
+custom deployment map and the acknowledge
+
+62
+00:04:28,847 --> 00:04:33,137
+action. Inspect both regions. The
+application validates the graph and
+
+63
+00:04:33,137 --> 00:04:37,861
+separately isolates the generated
+document. The trace shows the official run
+
+64
+00:04:37,861 --> 00:04:41,715
+lifecycle, tool arguments and state delta
+before RUN_FINISHED.
+
+65
+00:04:41,715 --> 00:04:46,185
+Now we change the declarative prompt to
+compact and run again. The arrival metric
+
+66
+00:04:46,185 --> 00:04:50,379
+is removed and Stack changes direction.
+Static mode would preserve its fixed
+
+67
+00:04:50,379 --> 00:04:54,462
+slots. This is a reproducible way to
+explain which decisions belong to the
+
+68
+00:04:54,462 --> 00:04:58,215
+application and which decisions belong to
+the generated description.
+
+69
+00:04:58,215 --> 00:05:02,425
+The acknowledge button executes an
+authorized action and returns a real
+
+70
+00:05:02,425 --> 00:05:07,051
+result. It affects only this synthetic
+demo session. A valid UI description is
+
+71
+00:05:07,051 --> 00:05:11,439
+not permission to call any tool. The
+server and the MCP host both maintain
+
+72
+00:05:11,439 --> 00:05:16,361
+allowlists. This action result comes from
+the application code, not from fabricated
+
+73
+00:05:16,361 --> 00:05:17,250
+console output.
+
+74
+00:05:17,250 --> 00:05:22,616
+The captured test output shows the Python
+contract tests, Node sandbox policy check,
+
+75
+00:05:22,616 --> 00:05:27,983
+and the MCP stdio smoke test. The browser
+matrix separately rendered all twenty four
+
+76
+00:05:27,983 --> 00:05:32,966
+topic and mode combinations with no page
+errors. These checks establish replay
+
+77
+00:05:32,966 --> 00:05:37,949
+execution and local protocol behavior.
+Live model behavior and an external MCP
+
+78
+00:05:37,949 --> 00:05:39,610
+Apps host remain untested.
+
+79
+00:05:39,610 --> 00:05:44,012
+This completes AG-UI. Review the full
+source walkthrough and this part's codelab
+
+80
+00:05:44,012 --> 00:05:48,139
+README. The prepared narration is
+synthetic. Record your own explanation if
+
+81
+00:05:48,139 --> 00:05:52,652
+required by the course, then upload one
+accessible YouTube video for this part and
+
+82
+00:05:52,652 --> 00:05:56,944
+put its real URL in the manifest. The
+submission checker intentionally reports
+
+83
+00:05:56,944 --> 00:05:59,200
+missing publication or student narration.

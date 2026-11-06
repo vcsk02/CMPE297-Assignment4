@@ -1,0 +1,6 @@
+fastapi==0.121.0
+uvicorn==0.38.0
+ag-ui-protocol==0.1.22
+mcp==1.26.0
+openai==2.7.1
+httpx==0.28.1

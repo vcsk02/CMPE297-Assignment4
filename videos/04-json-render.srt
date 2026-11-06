@@ -1,0 +1,452 @@
+1
+00:00:00,000 --> 00:00:04,743
+This is part 4, json-render. This is an
+automated walkthrough with synthetic
+
+2
+00:00:04,743 --> 00:00:09,612
+narration. The browser executes the
+repository code using deterministic replay
+
+3
+00:00:09,612 --> 00:00:14,667
+and synthetic emergency resource data. No
+live model call or external application
+
+4
+00:00:14,667 --> 00:00:18,911
+host is claimed. We will explain the
+implementation, execute static,
+
+5
+00:00:18,911 --> 00:00:23,405
+declarative, open-ended and mixed modes,
+and inspect the actual results.
+
+6
+00:00:23,405 --> 00:00:28,186
+The shared core declares the six topics,
+four modes and five allowed components.
+
+7
+00:00:28,186 --> 00:00:32,847
+Validate first checks the number of nodes
+and the root. It tracks visiting and
+
+8
+00:00:32,847 --> 00:00:37,329
+visited nodes so cycles and missing
+children cannot enter the renderer. The
+
+9
+00:00:37,329 --> 00:00:39,480
+catalog is the application contract.
+
+10
+00:00:39,480 --> 00:00:44,354
+The validation walk checks component names
+and exact property names. Every property
+
+11
+00:00:44,354 --> 00:00:49,111
+must be a bounded string. Stack direction
+is an enum, and Button actions can only
+
+12
+00:00:49,111 --> 00:00:54,102
+acknowledge. Only Stack can have children.
+The walk rejects unreachable nodes as well
+
+13
+00:00:54,102 --> 00:00:55,570
+as excessive graph depth.
+
+14
+00:00:55,570 --> 00:01:00,185
+Replay is explicitly a scripted agent. The
+application constructs a title, two
+
+15
+00:01:00,185 --> 00:01:04,860
+metrics and the acknowledge action. Static
+mode preserves this layout. In other
+
+16
+00:01:04,860 --> 00:01:09,593
+modes, compact removes the arrival metric
+and detailed adds a synthetic regional
+
+17
+00:01:09,593 --> 00:01:13,025
+note. These keywords make layout
+differences reproducible.
+
+18
+00:01:13,025 --> 00:01:18,111
+For open-ended and mixed mode, replay
+creates a custom HTML deployment map. User
+
+19
+00:01:18,111 --> 00:01:23,069
+prompt text is escaped before insertion
+into this fixture. Open-ended replaces
+
+20
+00:01:23,069 --> 00:01:28,409
+catalog content with the generated region.
+Mixed inserts the same artifact alongside
+
+21
+00:01:28,409 --> 00:01:33,176
+the application components. These two
+contracts expose different amounts of
+
+22
+00:01:33,176 --> 00:01:33,685
+freedom.
+
+23
+00:01:33,685 --> 00:01:39,652
+catalog.jsx, lines 1 through 34. Zod
+schemas feed json-render defineCatalog and
+
+24
+00:01:39,652 --> 00:01:45,544
+defineRegistry. JSONUIProvider supplies
+renderer contexts. StaticSurface fixes
+
+25
+00:01:45,544 --> 00:01:51,436
+application slots. The OpenUI library uses
+the same primitives, but Stack adds
+
+26
+00:01:51,436 --> 00:01:57,253
+positional children before direction.
+GeneratedView always uses an iframe and
+
+27
+00:01:57,253 --> 00:01:58,990
+the common CSP wrapper.
+
+28
+00:01:58,990 --> 00:02:05,054
+catalog.jsx, lines 35 through 68. Zod
+schemas feed json-render defineCatalog and
+
+29
+00:02:05,054 --> 00:02:10,967
+defineRegistry. JSONUIProvider supplies
+renderer contexts. StaticSurface fixes
+
+30
+00:02:10,967 --> 00:02:16,880
+application slots. The OpenUI library uses
+the same primitives, but Stack adds
+
+31
+00:02:16,880 --> 00:02:22,717
+positional children before direction.
+GeneratedView always uses an iframe and
+
+32
+00:02:22,717 --> 00:02:24,460
+the common CSP wrapper.
+
+33
+00:02:24,460 --> 00:02:30,769
+catalog.jsx, lines 69 through 102. Zod
+schemas feed json-render defineCatalog and
+
+34
+00:02:30,769 --> 00:02:36,845
+defineRegistry. JSONUIProvider supplies
+renderer contexts. StaticSurface fixes
+
+35
+00:02:36,845 --> 00:02:42,921
+application slots. The OpenUI library uses
+the same primitives, but Stack adds
+
+36
+00:02:42,921 --> 00:02:48,918
+positional children before direction.
+GeneratedView always uses an iframe and
+
+37
+00:02:48,918 --> 00:02:50,710
+the common CSP wrapper.
+
+38
+00:02:50,710 --> 00:02:57,135
+catalog.jsx, lines 103 through 121. Zod
+schemas feed json-render defineCatalog and
+
+39
+00:02:57,135 --> 00:03:03,247
+defineRegistry. JSONUIProvider supplies
+renderer contexts. StaticSurface fixes
+
+40
+00:03:03,247 --> 00:03:09,359
+application slots. The OpenUI library uses
+the same primitives, but Stack adds
+
+41
+00:03:09,359 --> 00:03:15,393
+positional children before direction.
+GeneratedView always uses an iframe and
+
+42
+00:03:15,393 --> 00:03:17,195
+the common CSP wrapper.
+
+43
+00:03:17,195 --> 00:03:21,663
+sandbox.mjs, lines 1 through 8. The
+restrictive CSP is prepended before
+
+44
+00:03:21,663 --> 00:03:26,132
+untrusted markup. Together with
+sandbox="", this blocks scripts, parent
+
+45
+00:03:26,132 --> 00:03:30,789
+access, network requests and form
+submission in generated regions. It does
+
+46
+00:03:30,789 --> 00:03:33,495
+not verify factual claims in their
+content.
+
+47
+00:03:33,495 --> 00:03:38,603
+The HTTP generation route checks topic and
+mode, runs the harness when selected, and
+
+48
+00:03:38,603 --> 00:03:43,346
+otherwise generates a graph. A2UI and
+OpenUI receive their own adapters. AG-UI
+
+49
+00:03:43,346 --> 00:03:48,393
+uses a separate event-stream endpoint. The
+action route checks authorization on the
+
+50
+00:03:48,393 --> 00:03:53,015
+server. These are different delivery
+contracts around the same bounded task.
+
+51
+00:03:53,015 --> 00:03:57,199
+The browser run function clears the
+previous output and trace. MCP mode
+
+52
+00:03:57,199 --> 00:04:01,442
+creates an app host. AG-UI consumes
+streamed events. Other topics post a
+
+53
+00:04:01,442 --> 00:04:06,274
+generation request. Returned results and
+tool history become inspectable UI state.
+
+54
+00:04:06,274 --> 00:04:10,988
+Later in this same module the surface
+selects the official renderer or the fixed
+
+55
+00:04:10,988 --> 00:04:15,290
+static slots. The complete module is
+included in the written walkthrough.
+
+56
+00:04:15,290 --> 00:04:19,804
+Static mode retains the application-
+defined slots. The output shows twelve
+
+57
+00:04:19,804 --> 00:04:24,378
+units and an eight minute arrival
+estimate. The agent cannot introduce a new
+
+58
+00:04:24,378 --> 00:04:28,952
+layout in this contract. The graph is
+rendered with the official json-render
+
+59
+00:04:28,952 --> 00:04:33,105
+catalog and registry, except for the
+deliberately fixed static slots.
+
+60
+00:04:33,105 --> 00:04:37,728
+Declarative mode chooses a graph from the
+component catalog. The detailed request
+
+61
+00:04:37,728 --> 00:04:42,409
+adds a regional note. Notice the source
+contract and the actual renderer. The same
+
+62
+00:04:42,409 --> 00:04:46,975
+graph can travel over events or in a tool
+result. The graph is rendered with the
+
+63
+00:04:46,975 --> 00:04:51,713
+official json-render catalog and registry,
+except for the deliberately fixed static
+
+64
+00:04:51,713 --> 00:04:52,055
+slots.
+
+65
+00:04:52,055 --> 00:04:56,567
+Open-ended mode displays a custom HTML
+deployment map. There are no catalog
+
+66
+00:04:56,567 --> 00:05:01,379
+metric cards in this output. The generated
+region receives no scripts or network
+
+67
+00:05:01,379 --> 00:05:05,891
+permission. This replay is real browser
+execution of a scripted output, not
+
+68
+00:05:05,891 --> 00:05:10,703
+evidence of a model generating it. The
+graph is rendered with the official json-
+
+69
+00:05:10,703 --> 00:05:15,275
+render catalog and registry, except for
+the deliberately fixed static slots.
+
+70
+00:05:15,275 --> 00:05:20,292
+Mixed mode combines catalog content, the
+custom deployment map and the acknowledge
+
+71
+00:05:20,292 --> 00:05:24,513
+action. Inspect both regions. The
+application validates the graph and
+
+72
+00:05:24,513 --> 00:05:29,040
+separately isolates the generated
+document. The graph is rendered with the
+
+73
+00:05:29,040 --> 00:05:34,118
+official json-render catalog and registry,
+except for the deliberately fixed static
+
+74
+00:05:34,118 --> 00:05:34,485
+slots.
+
+75
+00:05:34,485 --> 00:05:38,955
+Now we change the declarative prompt to
+compact and run again. The arrival metric
+
+76
+00:05:38,955 --> 00:05:43,149
+is removed and Stack changes direction.
+Static mode would preserve its fixed
+
+77
+00:05:43,149 --> 00:05:47,232
+slots. This is a reproducible way to
+explain which decisions belong to the
+
+78
+00:05:47,232 --> 00:05:50,985
+application and which decisions belong to
+the generated description.
+
+79
+00:05:50,985 --> 00:05:55,195
+The acknowledge button executes an
+authorized action and returns a real
+
+80
+00:05:55,195 --> 00:05:59,821
+result. It affects only this synthetic
+demo session. A valid UI description is
+
+81
+00:05:59,821 --> 00:06:04,209
+not permission to call any tool. The
+server and the MCP host both maintain
+
+82
+00:06:04,209 --> 00:06:09,131
+allowlists. This action result comes from
+the application code, not from fabricated
+
+83
+00:06:09,131 --> 00:06:10,020
+console output.
+
+84
+00:06:10,020 --> 00:06:15,386
+The captured test output shows the Python
+contract tests, Node sandbox policy check,
+
+85
+00:06:15,386 --> 00:06:20,753
+and the MCP stdio smoke test. The browser
+matrix separately rendered all twenty four
+
+86
+00:06:20,753 --> 00:06:25,736
+topic and mode combinations with no page
+errors. These checks establish replay
+
+87
+00:06:25,736 --> 00:06:30,719
+execution and local protocol behavior.
+Live model behavior and an external MCP
+
+88
+00:06:30,719 --> 00:06:32,380
+Apps host remain untested.
+
+89
+00:06:32,380 --> 00:06:36,810
+This completes json-render. Review the
+full source walkthrough and this part's
+
+90
+00:06:36,810 --> 00:06:41,524
+codelab README. The prepared narration is
+synthetic. Record your own explanation if
+
+91
+00:06:41,524 --> 00:06:46,181
+required by the course, then upload one
+accessible YouTube video for this part and
+
+92
+00:06:46,181 --> 00:06:50,611
+put its real URL in the manifest. The
+submission checker intentionally reports
+
+93
+00:06:50,611 --> 00:06:52,940
+missing publication or student narration.

@@ -1,0 +1,73 @@
+{
+  "created_at": "2026-11-06T21:37:38.122Z",
+  "recording_type": "Automated browser execution capture and source walkthrough with synthetic speech",
+  "baseline": "deterministic replay; synthetic data; no live model calls",
+  "parts": [
+    {
+      "number": 1,
+      "title": "A2UI",
+      "file": "videos/01-a2ui.mp4",
+      "captions": "videos/01-a2ui.srt",
+      "transcript": "videos/01-a2ui-transcript.md",
+      "duration_seconds": 401,
+      "youtube_url": null,
+      "narration": "synthetic",
+      "student_explanation_recorded": false
+    },
+    {
+      "number": 2,
+      "title": "AG-UI",
+      "file": "videos/02-agui.mp4",
+      "captions": "videos/02-agui.srt",
+      "transcript": "videos/02-agui-transcript.md",
+      "duration_seconds": 359,
+      "youtube_url": null,
+      "narration": "synthetic",
+      "student_explanation_recorded": false
+    },
+    {
+      "number": 3,
+      "title": "MCP Apps",
+      "file": "videos/03-mcp-apps.mp4",
+      "captions": "videos/03-mcp-apps.srt",
+      "transcript": "videos/03-mcp-apps-transcript.md",
+      "duration_seconds": 493,
+      "youtube_url": null,
+      "narration": "synthetic",
+      "student_explanation_recorded": false
+    },
+    {
+      "number": 4,
+      "title": "json-render",
+      "file": "videos/04-json-render.mp4",
+      "captions": "videos/04-json-render.srt",
+      "transcript": "videos/04-json-render-transcript.md",
+      "duration_seconds": 413,
+      "youtube_url": null,
+      "narration": "synthetic",
+      "student_explanation_recorded": false
+    },
+    {
+      "number": 5,
+      "title": "OpenUI Lang",
+      "file": "videos/05-openui.mp4",
+      "captions": "videos/05-openui.srt",
+      "transcript": "videos/05-openui-transcript.md",
+      "duration_seconds": 457,
+      "youtube_url": null,
+      "narration": "synthetic",
+      "student_explanation_recorded": false
+    },
+    {
+      "number": 6,
+      "title": "Harness integration",
+      "file": "videos/06-harness.mp4",
+      "captions": "videos/06-harness.srt",
+      "transcript": "videos/06-harness-transcript.md",
+      "duration_seconds": 429,
+      "youtube_url": null,
+      "narration": "synthetic",
+      "student_explanation_recorded": false
+    }
+  ]
+}

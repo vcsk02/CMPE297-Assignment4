@@ -1,0 +1,39 @@
+{
+  "results": [
+    {
+      "topic": "a2ui",
+      "compact": true,
+      "action_round_trip": true
+    },
+    {
+      "topic": "agui",
+      "compact": true,
+      "action_round_trip": true
+    },
+    {
+      "topic": "mcp-apps",
+      "compact": true,
+      "action_round_trip": true
+    },
+    {
+      "topic": "json-render",
+      "compact": true,
+      "action_round_trip": true
+    },
+    {
+      "topic": "openui",
+      "compact": true,
+      "action_round_trip": true
+    },
+    {
+      "topic": "harness",
+      "compact": true,
+      "action_round_trip": true
+    }
+  ],
+  "sandbox": {
+    "script_blocked": true,
+    "parent_access_blocked": true,
+    "network_blocked": true
+  }
+}

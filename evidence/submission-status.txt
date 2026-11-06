@@ -1,0 +1,12 @@
+A2UI: valid YouTube URL missing
+A2UI: student explanation not recorded/confirmed
+AG-UI: valid YouTube URL missing
+AG-UI: student explanation not recorded/confirmed
+MCP Apps: valid YouTube URL missing
+MCP Apps: student explanation not recorded/confirmed
+json-render: valid YouTube URL missing
+json-render: student explanation not recorded/confirmed
+OpenUI Lang: valid YouTube URL missing
+OpenUI Lang: student explanation not recorded/confirmed
+Harness integration: valid YouTube URL missing
+Harness integration: student explanation not recorded/confirmed

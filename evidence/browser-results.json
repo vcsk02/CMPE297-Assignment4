@@ -1,0 +1,149 @@
+{
+  "results": [
+    {
+      "topic": "a2ui",
+      "mode": "static",
+      "rendered": true,
+      "frames": 0
+    },
+    {
+      "topic": "a2ui",
+      "mode": "declarative",
+      "rendered": true,
+      "frames": 0
+    },
+    {
+      "topic": "a2ui",
+      "mode": "open-ended",
+      "rendered": true,
+      "frames": 1
+    },
+    {
+      "topic": "a2ui",
+      "mode": "mixed",
+      "rendered": true,
+      "frames": 1
+    },
+    {
+      "topic": "agui",
+      "mode": "static",
+      "rendered": true,
+      "frames": 0
+    },
+    {
+      "topic": "agui",
+      "mode": "declarative",
+      "rendered": true,
+      "frames": 0
+    },
+    {
+      "topic": "agui",
+      "mode": "open-ended",
+      "rendered": true,
+      "frames": 1
+    },
+    {
+      "topic": "agui",
+      "mode": "mixed",
+      "rendered": true,
+      "frames": 1
+    },
+    {
+      "topic": "mcp-apps",
+      "mode": "static",
+      "rendered": true,
+      "frames": 1
+    },
+    {
+      "topic": "mcp-apps",
+      "mode": "declarative",
+      "rendered": true,
+      "frames": 1
+    },
+    {
+      "topic": "mcp-apps",
+      "mode": "open-ended",
+      "rendered": true,
+      "frames": 2
+    },
+    {
+      "topic": "mcp-apps",
+      "mode": "mixed",
+      "rendered": true,
+      "frames": 2
+    },
+    {
+      "topic": "json-render",
+      "mode": "static",
+      "rendered": true,
+      "frames": 0
+    },
+    {
+      "topic": "json-render",
+      "mode": "declarative",
+      "rendered": true,
+      "frames": 0
+    },
+    {
+      "topic": "json-render",
+      "mode": "open-ended",
+      "rendered": true,
+      "frames": 1
+    },
+    {
+      "topic": "json-render",
+      "mode": "mixed",
+      "rendered": true,
+      "frames": 1
+    },
+    {
+      "topic": "openui",
+      "mode": "static",
+      "rendered": true,
+      "frames": 0
+    },
+    {
+      "topic": "openui",
+      "mode": "declarative",
+      "rendered": true,
+      "frames": 0
+    },
+    {
+      "topic": "openui",
+      "mode": "open-ended",
+      "rendered": true,
+      "frames": 1
+    },
+    {
+      "topic": "openui",
+      "mode": "mixed",
+      "rendered": true,
+      "frames": 1
+    },
+    {
+      "topic": "harness",
+      "mode": "static",
+      "rendered": true,
+      "frames": 0
+    },
+    {
+      "topic": "harness",
+      "mode": "declarative",
+      "rendered": true,
+      "frames": 0
+    },
+    {
+      "topic": "harness",
+      "mode": "open-ended",
+      "rendered": true,
+      "frames": 1
+    },
+    {
+      "topic": "harness",
+      "mode": "mixed",
+      "rendered": true,
+      "frames": 1
+    }
+  ],
+  "errors": []
+}
